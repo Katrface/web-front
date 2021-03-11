@@ -1,6 +1,7 @@
 var path = require('path');
 
 module.exports = {
+    mode: 'development',
     entry: "./app/app.js", // входная точка - исходный файл
     output:{
         path: path.resolve(__dirname, './public'),     // путь к каталогу выходных файлов - папка public
@@ -9,7 +10,7 @@ module.exports = {
     },
     devServer: {
         historyApiFallback: true,
-        port: 8081,
+        port: 8082,
         open: true
     },
     module:{
