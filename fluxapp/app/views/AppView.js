@@ -30,20 +30,20 @@ class AppView extends React.Component{
             <h2>Список смартфонов</h2>
             <div>
                 {
-                    this.props.phones.map(function(item){
+                    this.props.phones.map(function(item, index){
 
-                        return <Phone key={item} text={item} onRemove={remove} onUpdate={update}/>
+                        return <Phone key={index} text={item} onRemove={remove} onUpdate={update}/>
                     })
                 }
             </div>
-            <div>
+            {/* <div>
                 {
                     this.props.phones.map(function(item){
 
                         return <Phone key={item} text={item} onRemove={remove} onUpdate={update}/>
                     })
                 }
-            </div>
+            </div> */}
         </div>);
     }
 }

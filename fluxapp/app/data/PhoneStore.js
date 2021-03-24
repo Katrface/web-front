@@ -10,14 +10,14 @@ class PhonesStore extends ReduceStore{
         super(PhonesDispatcher);
     }
     getInitialState() {
-        return Immutable.List(getAll());
+        return getAll();
     }
 
     reduce(state, action) {
         switch (action.type) {
             case ActionTypes.ADD_ITEM:
                 if (action.text) {
-                    addItem(action.text);
+                    return addItem(action.text);
 
                     return state.push(action.text);
                 }
@@ -25,7 +25,7 @@ class PhonesStore extends ReduceStore{
             case ActionTypes.REMOVE_ITEM:
                 let index = state.indexOf(action.text);
                 if (index > -1) {
-                    deleteItem(action.text);
+                    return deleteItem(action.text);
 
                     return state.delete(index);
                 }
@@ -33,13 +33,13 @@ class PhonesStore extends ReduceStore{
             case ActionTypes.UPDATE_ITEM:
                 index = state.indexOf(action.oldText);
                 if (index > -1) {
-                    updateItem(action.oldText, action.newText);
+                    return updateItem(action.oldText, action.newText);
                     
                     return state.set(index, action.newText);
                 }
-                return state;
+                return state.copyWithin();
             default:
-                return state;
+                return state.copyWithin();
         }
     }
 }
